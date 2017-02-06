@@ -81,8 +81,6 @@ for i in "/etc/${0##*/}" $home/."${0##*/}/${0##*/}.rc" $home/."${0##*/}.rc" "/et
     load_config $i
 done
 
-exit 1;
-
 host="${RMATE_HOST:-$host}"
 port="${RMATE_PORT:-$port}"
 
