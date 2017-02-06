@@ -89,7 +89,8 @@ The precedence for setting the configuration is (higher precedence counts):
 2. /etc/rmate.rc
 3. ~/.rmate/rmate.rc
 4. ~/.rmate.rc
-5. environment variables (RMATE\_HOST, RMATE\_PORT)
+5. /etc/rmate/(username).rc
+6. environment variables (RMATE\_HOST, RMATE\_PORT)
 
 ## Disclaimer
 
