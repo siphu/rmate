@@ -57,7 +57,8 @@ hostname=$($(hostname_command))
 # default configuration
 host=localhost
 port=52698
-eval home=$(builtin printf "%q" "${SUDO_USER:-$LOGNAME}")
+eval home=$(builtin printf "~%q" "${SUDO_USER:-$LOGNAME}")
+eval user=${SUDO_USER:-$(whoami)}
 
 function load_config {
     local rc_file=$1
@@ -76,10 +77,11 @@ function load_config {
         done < "$rc_file"
     fi
 }
-
-for i in "/etc/${0##*/}" "/home/$home/${0##*/}/${0##*/}.rc" "/home/$home/${0##*/}.rc" "/etc/${0##*/}/$home.rc"; do
+for i in "/etc/${0##*/}" $home/."${0##*/}/${0##*/}.rc" $home/."${0##*/}.rc" "/etc/${0##*/}/$user.rc"; do
     load_config $i
 done
+
+exit 1;
 
 host="${RMATE_HOST:-$host}"
 port="${RMATE_PORT:-$port}"
