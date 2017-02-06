@@ -77,7 +77,8 @@ function load_config {
         done < "$rc_file"
     fi
 }
-for i in "/etc/${0##*/}" "/home/$home/${0##*/}/${0##*/}.rc" "/home/$home/${0##*/}.rc" "/etc/${0##*/}/$home.rc"; do
+
+for i in "/etc/${0##*/}" $home/."${0##*/}/${0##*/}.rc" $home/."${0##*/}.rc" "/etc/${0##*/}/$user.rc" ; do
     load_config $i
 done
 
@@ -384,5 +385,3 @@ if [[ $nowait = true ]]; then
 else
     handle_connection
 fi
-
-
